@@ -9,6 +9,9 @@
 </head>
 <body>
 
+    <!-- Contenedor para la lluvia de emojis -->
+    <div id="emoji-container"></div>
+
     <!-- Contador en la barra superior -->
     <div id="top-bar">
         <span>Tiempo desde que comenzamos ❤️: </span>
@@ -61,7 +64,11 @@
                     <input type="text" id="console-input" placeholder="Escribe aquí..." autofocus>
                 </div>
             </div>
-            <button onclick="nextPage(5)" style="margin-top: 15px;">Siguiente ➔</button>
+            
+            <!-- Botón curioso -->
+            <button onclick="secretButton()" style="margin-top: 15px; background: #334155; font-size: 0.85rem;">⚠️ No presiones aquí</button>
+            <br>
+            <button onclick="nextPage(5)" style="margin-top: 10px;">Siguiente ➔</button>
         </section>
 
         <!-- PÁGINA 5: Carta final -->
