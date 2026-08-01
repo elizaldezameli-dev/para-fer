@@ -15,29 +15,38 @@ function resetToStart() {
     }
 }
 
-// Lluvia de Emojis Flotantes
+// Lluvia de Emojis Flotantes en Cascada
 function createFloatingEmoji(emojiSymbol) {
     const emojiContainer = document.getElementById('emoji-container');
     if (!emojiContainer) return;
 
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 20; i++) {
         const emoji = document.createElement('div');
         emoji.classList.add('floating-emoji');
         emoji.innerText = emojiSymbol;
         
-        emoji.style.left = Math.random() * 100 + 'vw';
-        emoji.style.animationDuration = (Math.random() * 2 + 2) + 's';
-        emoji.style.fontSize = (Math.random() * 1.5 + 1.5) + 'rem';
+        // Posicionamiento horizontal aleatorio de 5vw a 95vw
+        const randomLeft = Math.floor(Math.random() * 90) + 5;
+        emoji.style.left = randomLeft + 'vw';
+        
+        // Tiempos y tamaños desfasados para efecto cascada natural
+        const duration = (Math.random() * 2 + 2.5); // entre 2.5s y 4.5s
+        const delay = Math.random() * 0.8;
+        const size = (Math.random() * 1.5 + 1.2);
+
+        emoji.style.animationDuration = duration + 's';
+        emoji.style.animationDelay = delay + 's';
+        emoji.style.fontSize = size + 'rem';
         
         emojiContainer.appendChild(emoji);
 
         setTimeout(() => {
             emoji.remove();
-        }, 4000);
+        }, (duration + delay) * 1000);
     }
 }
 
-// Cambiar de pantalla limpiamente Y LANZAR CORAZONES
+// Cambiar de pantalla limpiamente Y LANZAR CASCADA DE CORAZONES
 function nextPage(pageNum, emojiToUse = '❤️') {
     document.querySelectorAll('.card').forEach(card => {
         card.classList.remove('active');
