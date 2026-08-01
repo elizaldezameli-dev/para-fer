@@ -15,7 +15,7 @@ function resetToStart() {
     }
 }
 
-// Lluvia de Emojis Flotantes (corazones, besos, etc.)
+// Lluvia de Emojis Flotantes
 function createFloatingEmoji(emojiSymbol) {
     const emojiContainer = document.getElementById('emoji-container');
     if (!emojiContainer) return;
@@ -37,23 +37,39 @@ function createFloatingEmoji(emojiSymbol) {
     }
 }
 
-// Cambiar de pantalla limpiamente Y LANZAR CORAZONES al hacer click
+// Cambiar de pantalla limpiamente Y LANZAR CORAZONES
 function nextPage(pageNum, emojiToUse = '❤️') {
-    // 1. Ocultar todas las tarjetas
     document.querySelectorAll('.card').forEach(card => {
         card.classList.remove('active');
         card.style.display = 'none';
     });
     
-    // 2. Mostrar solo la seleccionada
     const targetCard = document.getElementById('page-' + pageNum);
     if (targetCard) {
         targetCard.classList.add('active');
         targetCard.style.display = 'block';
     }
 
-    // 3. ¡Lluvia de corazones al hacer click!
     createFloatingEmoji(emojiToUse);
+}
+
+// Mensajes para días difíciles
+const cheerMessages = [
+    "Recuerda que los malos días también pasan, pero lo increíble que eres dura para siempre. ❤️",
+    "Inhala profundo... exhala. Todo va a estar bien, mi lunita. 🌙✨",
+    "Eres más fuerte de lo que te imaginas y más capaz de lo que crees. ¡Tú puedes con todo! 💪💖",
+    "No olvides sonreír, iluminas todo a tu alrededor cuando lo haces. 😊✨",
+    "Cierra los ojos un segundo e imagíname dándote el abrazo más grande del mundo. 🤗💖",
+    "No tienes que poder con todo hoy. Respira y ve a tu ritmo. Te amo. ❤️"
+];
+
+function getCheerMessage() {
+    const box = document.getElementById('cheer-box');
+    const randomMsg = cheerMessages[Math.floor(Math.random() * cheerMessages.length)];
+    if (box) {
+        box.innerText = `"${randomMsg}"`;
+    }
+    createFloatingEmoji('💖');
 }
 
 // Fecha exacta: 25 de mayo de 2026 a las 8:00 PM (20:00 hrs)
@@ -90,9 +106,9 @@ function secretButton() {
     createFloatingEmoji('💖');
 }
 
-// Consola interactiva con respuestas y animación de emojis
+// Consola interactiva
 document.addEventListener('DOMContentLoaded', () => {
-    resetToStart(); // Reiniciar a la pantalla 1 siempre al recargar
+    resetToStart();
 
     const consoleInput = document.getElementById('console-input');
     const consoleOutput = document.getElementById('console-output');
