@@ -5,109 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Fer ❤️</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Librería para el confeti final -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Contador de tiempo juntos en la parte superior -->
-    <header id="top-bar" class="hidden">
-        <p>Tiempo desde que comenzamos ❤️: <span id="time-counter">Cargando...</span></p>
-    </header>
+    <!-- Contador en la barra superior -->
+    <div id="top-bar">
+        <span>Tiempo desde que comenzamos ❤️: </span>
+        <span id="timer">Cargando...</span>
+    </div>
 
-    <main class="container">
-
-        <!-- 1. Pantalla de Bienvenida (La que ya tenías) -->
-        <section id="page-1" class="page active">
-            <div class="pantalla">
-                <h1>Hola Fer ❤️</h1>
-                <p>Hay algo que preparé para ti...</p>
-                <button id="btnComenzar">Abrir</button>
-            </div>
+    <div class="container">
+        
+        <!-- PÁGINA 1: Bienvenida -->
+        <section id="page-1" class="card active">
+            <h1>Hola Fer ❤️</h1>
+            <p>Hay algo que preparé para ti...</p>
+            <button onclick="nextPage(2)">Abrir</button>
         </section>
 
-        <!-- 2. Carga / Estado del Sistema -->
-        <section id="page-2" class="page hidden">
-            <div class="card">
-                <h2>RelationshipOS v1.0</h2>
-                <div class="status-box">
-                    <p><strong>Usuario:</strong> Fer ❤️</p>
-                    <p><strong>Estado:</strong> La persona más especial</p>
-                    <p><strong>Cargando recuerdos...</strong> 100%</p>
-                </div>
-                <button id="btn-to-letter" class="btn">Continuar ➔</button>
-            </div>
+        <!-- PÁGINA 2: Mi Lunita -->
+        <section id="page-2" class="card">
+            <h2>Mi lunita 🌙</h2>
+            <p class="status"><strong>Usuario:</strong> Fer ❤️</p>
+            <p class="status"><strong>Estado:</strong> La persona más especial</p>
+            <p class="status"><strong>Cargando recuerdos...</strong> 100%</p>
+            <button onclick="nextPage(3)">Continuar ➔</button>
         </section>
 
-        <!-- 3. Carta con efecto Máquina de Escribir -->
-        <section id="page-3" class="page hidden">
-            <div class="card">
-                <div id="typewriter-text" class="typewriter"></div>
-                <button id="btn-to-timeline" class="btn hidden">Ver nuestra historia ➔</button>
-            </div>
-        </section>
-
-        <!-- 4. Línea del Tiempo -->
-        <section id="page-4" class="page hidden">
+        <!-- PÁGINA 3: Línea del tiempo -->
+        <section id="page-3" class="card">
             <h2>Nuestra Historia</h2>
             <div class="timeline">
-                <div class="timeline-item">Nos conocimos ❤️</div>
-                <div class="timeline-arrow">↓</div>
-                <div class="timeline-item">Empezamos a hablar</div>
-                <div class="timeline-arrow">↓</div>
-                <div class="timeline-item">Primeras risas</div>
-                <div class="timeline-arrow">↓</div>
-                <div class="timeline-item">Nos enamoramos</div>
-                <div class="timeline-arrow">↓</div>
-                <div class="timeline-item highlight">Primer cumpleaños juntas 🎂</div>
+                <div class="step">Nos conocimos ❤️</div>
+                <div class="arrow">↓</div>
+                <div class="step">Empezamos a hablar</div>
+                <div class="arrow">↓</div>
+                <div class="step">Primeras risas</div>
+                <div class="arrow">↓</div>
+                <div class="step">Nos enamoramos</div>
+                <div class="arrow">↓</div>
+                <div class="step">Primer cumpleaños juntas 🎂</div>
             </div>
-            <button id="btn-to-console" class="btn">Ir a la consola ➔</button>
+            <button onclick="nextPage(4)">Ir a la consola ➔</button>
         </section>
 
-        <!-- 5. Consola Interactiva (Comandos) -->
-        <section id="page-5" class="page hidden">
+        <!-- PÁGINA 4: Consola interactiva -->
+        <section id="page-4" class="card">
             <div class="console-box">
                 <div class="console-header">C:\Users\Fer></div>
-                <div id="console-output" class="console-output">
-                    Escribe un comando (ej: <code>hug</code>, <code>kiss</code>, <code>future</code>)
-                </div>
-                <div class="console-input-line">
-                    <span>></span>
+                <p>Escribe un comando (ej: <b>hug</b>, <b>kiss</b>, <b>future</b>, <b>love</b>)</p>
+                <div id="console-output"></div>
+                <div class="console-input-wrapper">
+                    <span>> </span>
                     <input type="text" id="console-input" placeholder="Escribe aquí..." autofocus>
                 </div>
             </div>
-            <button id="btn-to-secret" class="btn">Siguiente ➔</button>
+            <button onclick="nextPage(5)" style="margin-top: 15px;">Siguiente ➔</button>
         </section>
 
-        <!-- 6. Botón Secreto -->
-        <section id="page-6" class="page hidden">
-            <div class="card">
-                <button id="btn-secret" class="btn-secret">No presiones aquí 👀</button>
-                <div id="secret-response" class="hidden">
-                    <p class="secret-msg">Sabía que ibas a presionar jajaja ❤️</p>
-                    <button id="btn-to-final" class="btn">Ver el mensaje final ❤️</button>
-                </div>
-            </div>
+        <!-- PÁGINA 5: Carta final -->
+        <section id="page-5" class="card">
+            <h2>Para ti, con todo mi amor 💖</h2>
+            <p class="letter">
+                Gracias por cada momento, cada risa y por hacer mi vida mucho más bonita. 
+                Este pequeño espacio es solo una muestra de lo mucho que te quiero y de lo especial que eres para mí. 
+                <br><br>
+                ¡Te amo infinitamente! ✨
+            </p>
+            <button onclick="nextPage(1)">Volver al inicio 🔄</button>
         </section>
 
-        <!-- 7. Pantalla Final con Foto y Confeti -->
-        <!-- 7. Pantalla Final con Confeti (Sin foto) -->
-        <section id="page-final" class="page hidden">
-            <div class="card final-card">
-                <div class="heart-pulse" style="font-size: 60px; margin-bottom: 15px;">❤️</div>
-                <div class="final-text">
-                    <p style="font-size: 22px; margin-bottom: 10px;"><strong>Gracias por existir.</strong></p>
-                    <p style="font-size: 20px; color: #ff4d88; margin-bottom: 10px;">Feliz cumpleaños mi amor.🎂</p>
-                    <p style="font-size: 18px; margin-bottom: 15px;">Te amo muchísimo.</p>
-                    <p style="font-size: 16px; color: #94a3b8;">Con todo mi amor: Eli ❤️</p>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Canvas para la lluvia de corazones -->
-    <canvas id="hearts-canvas"></canvas>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
