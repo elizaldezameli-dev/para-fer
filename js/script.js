@@ -29,12 +29,20 @@ function nextPage(pageNum) {
     }
 }
 
-// Contador de tiempo
-const startDate = new Date('2024-01-01T00:00:00'); 
+// Fecha exacta: 25 de mayo de 2026 a las 8:00 PM (20:00 hrs)
+const startDate = new Date('2026-05-25T20:00:00'); 
 
 function updateTimer() {
     const now = new Date();
     const diff = now - startDate;
+
+    if (diff < 0) {
+        const timerElement = document.getElementById('timer');
+        if (timerElement) {
+            timerElement.innerText = "¡Muy pronto!";
+        }
+        return;
+    }
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
