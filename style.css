@@ -1,0 +1,234 @@
+/* --- ESTILOS NEÓN / OSCURO PARA RELATIONSHIPOS --- */
+
+:root {
+    --bg-color: #0f172a; /* Fondo azul grisáceo muy oscuro */
+    --card-bg: #1e293b;  /* Fondo de tarjetas ligeramente más claro */
+    --text-color: #f1f5f9; /* Texto casi blanco */
+    --accent-primary: #ff4d88; /* Rosa neón principal */
+    --accent-secondary: #38bdf8; /* Azul neón secundario */
+    --border-color: #334155; /* Color de bordes sutil */
+    --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: 'Courier New', Courier, monospace; /* Para la consola */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    padding-top: 60px; /* Espacio para la barra superior */
+}
+
+/* Barra Superior / Contador */
+#top-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(15, 23, 42, 0.95); /* Fondo semitransparente */
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+    padding: 12px 0;
+    font-family: var(--font-mono);
+    color: var(--accent-secondary);
+    z-index: 1000;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+#top-bar p {
+    font-size: 14px;
+}
+
+.container {
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+}
+
+.hidden { display: none !important; }
+
+/* Estilos de Botones Generales (Neón Rosa) */
+button, .btn {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 50px; /* Bordes muy redondeados */
+    background: var(--accent-primary);
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 77, 136, 0.4); /* Brillo inicial */
+}
+
+button:hover, .btn:hover {
+    transform: translateY(-3px); /* Pequeño salto al pasar el mouse */
+    box-shadow: 0 6px 20px rgba(255, 77, 136, 0.6); /* Brillo más fuerte */
+    background: #e03e75; /* Rosa un poco más oscuro */
+}
+
+/* Tarjetas y Contenedores */
+.card, .terminal, .pantalla, .letter-container, .console-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+}
+
+/* Tipografía de Títulos */
+h1, h2 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+h1 { font-size: 32px; }
+h2 { font-size: 24px; }
+
+/* Tipografía de Párrafos */
+p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #cbd5e1; /* Texto secundario gris claro */
+    margin-bottom: 10px;
+}
+
+/* Línea de Tiempo */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.timeline-item {
+    background: rgba(51, 65, 85, 0.5); /* Fondo sutil */
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 16px;
+    width: fit-content;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+    border-color: var(--accent-secondary);
+    background: rgba(56, 189, 248, 0.1); /* Brillo azul al pasar mouse */
+}
+
+.timeline-arrow {
+    font-size: 20px;
+    color: var(--border-color);
+}
+
+.timeline-item.highlight {
+    background: var(--accent-primary);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(255, 77, 136, 0.3);
+}
+
+/* Consola interactiva (Estilo Terminal Neón Azul) */
+.console-box {
+    text-align: left;
+    font-family: var(--font-mono);
+    border-color: var(--accent-secondary); /* Borde neón azul */
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+}
+
+.console-header {
+    color: var(--accent-secondary);
+    margin-bottom: 15px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+    padding-bottom: 8px;
+}
+
+.console-output {
+    font-size: 15px;
+    margin-bottom: 15px;
+    color: #94a3b8;
+}
+
+.console-output code {
+    color: var(--accent-secondary);
+    background: rgba(56, 189, 248, 0.1);
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+.console-input-line {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.console-input-line span {
+    color: var(--accent-secondary);
+    font-weight: bold;
+}
+
+.console-input-line input {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-family: var(--font-mono);
+    font-size: 16px;
+    outline: none;
+    width: 100%;
+}
+
+/* Botón Secreto (Rojo Neón) */
+.btn-secret {
+    background: #ef4444; /* Rojo vibrante */
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+}
+
+.btn-secret:hover {
+    background: #dc2626;
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6);
+}
+
+/* Canvas para la lluvia de corazones */
+#hearts-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* No interfiere con clics */
+    z-index: 99;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.page:not(.hidden) {
+    animation: fadeIn 0.5s ease-out; /* Transición suave entre páginas */
+}
