@@ -24,7 +24,7 @@
         <section id="page-1" class="card active" style="display: block;">
             <h1>Hola Fer ❤️</h1>
             <p>Hay algo que preparé para ti...</p>
-            <button onclick="nextPage(2)">Abrir</button>
+            <button onclick="nextPage(2, '❤️')">Abrir</button>
         </section>
 
         <!-- PÁGINA 2: Mi Lunita -->
@@ -33,7 +33,7 @@
             <p class="status"><strong>Usuario:</strong> Fer ❤️</p>
             <p class="status"><strong>Estado:</strong> La persona más especial</p>
             <p class="status"><strong>Cargando recuerdos...</strong> 100%</p>
-            <button onclick="nextPage(3)">Continuar ➔</button>
+            <button onclick="nextPage(3, '✨')">Continuar ➔</button>
         </section>
 
         <!-- PÁGINA 3: Línea del tiempo -->
@@ -50,7 +50,7 @@
                 <div class="arrow">↓</div>
                 <div class="step">Primer cumpleaños juntas 🎂</div>
             </div>
-            <button onclick="nextPage(4)">Ir a la consola ➔</button>
+            <button onclick="nextPage(4, '💋')">Ir a la consola ➔</button>
         </section>
 
         <!-- PÁGINA 4: Consola interactiva -->
@@ -68,7 +68,7 @@
             <!-- Botón curioso -->
             <button onclick="secretButton()" style="margin-top: 15px; background: #334155; font-size: 0.85rem;">⚠️ No presiones aquí</button>
             <br>
-            <button onclick="nextPage(5)" style="margin-top: 10px;">Siguiente ➔</button>
+            <button onclick="nextPage(5, '💖')" style="margin-top: 10px;">Siguiente ➔</button>
         </section>
 
         <!-- PÁGINA 5: Carta final -->
@@ -80,11 +80,27 @@
                 <br><br>
                 ¡Te amo infinitamente! ✨
             </p>
-            <button onclick="nextPage(1)">Volver al inicio 🔄</button>
+            <button onclick="nextPage(6, '🩹')" style="background: #e11d48; margin-bottom: 10px;">¿Tienes un mal día? Toca aquí 🩹</button>
+            <br>
+            <button onclick="nextPage(1, '❤️')">Volver al inicio 🔄</button>
+        </section>
+
+        <!-- PÁGINA 6: Para días difíciles -->
+        <section id="page-6" class="card" style="display: none;">
+            <h2>Para cuando tengas un mal día 🌙✨</h2>
+            <p>Si las cosas hoy no salieron bien o te sientes abrumada, recuerda que eres una persona maravillosa, fuerte e increíble. Estoy aquí para ti siempre.</p>
+            
+            <div id="cheer-box" style="background: rgba(255,255,255,0.08); padding: 15px; border-radius: 10px; margin: 15px 0; min-height: 50px; font-style: italic;">
+                Haz clic abajo para leer una notita de amor 👇
+            </div>
+
+            <button onclick="getCheerMessage()" style="background: #8b5cf6;">Dame un abrazo virtual 🫂</button>
+            <br><br>
+            <button onclick="nextPage(1, '❤️')">Volver al inicio 🔄</button>
         </section>
 
     </div>
 
-   <script src="js/script.js?v=2"></script>
+    <script src="js/script.js?v=4"></script>
 </body>
 </html>
