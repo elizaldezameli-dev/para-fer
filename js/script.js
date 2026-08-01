@@ -15,18 +15,45 @@ function resetToStart() {
     }
 }
 
-// Cambiar de pantalla limpiamente
-function nextPage(pageNum) {
+// Lluvia de Emojis Flotantes (corazones, besos, etc.)
+function createFloatingEmoji(emojiSymbol) {
+    const emojiContainer = document.getElementById('emoji-container');
+    if (!emojiContainer) return;
+
+    for (let i = 0; i < 15; i++) {
+        const emoji = document.createElement('div');
+        emoji.classList.add('floating-emoji');
+        emoji.innerText = emojiSymbol;
+        
+        emoji.style.left = Math.random() * 100 + 'vw';
+        emoji.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        emoji.style.fontSize = (Math.random() * 1.5 + 1.5) + 'rem';
+        
+        emojiContainer.appendChild(emoji);
+
+        setTimeout(() => {
+            emoji.remove();
+        }, 4000);
+    }
+}
+
+// Cambiar de pantalla limpiamente Y LANZAR CORAZONES al hacer click
+function nextPage(pageNum, emojiToUse = '❤️') {
+    // 1. Ocultar todas las tarjetas
     document.querySelectorAll('.card').forEach(card => {
         card.classList.remove('active');
         card.style.display = 'none';
     });
     
+    // 2. Mostrar solo la seleccionada
     const targetCard = document.getElementById('page-' + pageNum);
     if (targetCard) {
         targetCard.classList.add('active');
         targetCard.style.display = 'block';
     }
+
+    // 3. ¡Lluvia de corazones al hacer click!
+    createFloatingEmoji(emojiToUse);
 }
 
 // Fecha exacta: 25 de mayo de 2026 a las 8:00 PM (20:00 hrs)
@@ -56,28 +83,6 @@ function updateTimer() {
 
 setInterval(updateTimer, 1000);
 updateTimer();
-
-// Lluvia de Emojis Flotantes
-function createFloatingEmoji(emojiSymbol) {
-    const emojiContainer = document.getElementById('emoji-container');
-    if (!emojiContainer) return;
-
-    for (let i = 0; i < 15; i++) {
-        const emoji = document.createElement('div');
-        emoji.classList.add('floating-emoji');
-        emoji.innerText = emojiSymbol;
-        
-        emoji.style.left = Math.random() * 100 + 'vw';
-        emoji.style.animationDuration = (Math.random() * 2 + 2) + 's';
-        emoji.style.fontSize = (Math.random() * 1.5 + 1.5) + 'rem';
-        
-        emojiContainer.appendChild(emoji);
-
-        setTimeout(() => {
-            emoji.remove();
-        }, 4000);
-    }
-}
 
 // Botón secreto "No presiones aquí"
 function secretButton() {
